@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    background: linear-gradient(to bottom, #8e9eab, #eef2f3);
+    color: #333;
+    font-family: 'Consolas', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#header {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+#header h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 6em;
+    color: #0015ff4d;
+    text-shadow: 2px 2px #00000000;
+    margin: 0;
+}
+
+#score-panel {
+    display: inline-block;
+    margin-top: 10px;
+    background: rgba(101, 66, 28, 0.535);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+canvas {
+    border: 2px solid #ffd90056;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 200%;
+    max-width: 960px;
+    height: auto;
+    z-index: 1;
+}
+
+#side-panel {
+    margin-left: 20px;
+    font-size: 1.2em;
+    color: #333;
+    text-align: left;
+    z-index: 1;
+}
+
+.background-text {
+    position: absolute;
+    font-size: 4em;
+    font-family: 'Press Start 2P', cursive;
+    color: rgba(255, 255, 255, 0.1);
+    transform: rotate(-30deg);
+    white-space: nowrap;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
