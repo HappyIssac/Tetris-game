@@ -81,16 +81,63 @@ function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
             if (value !== 0) {
+                // Fill the block with its color
                 context.fillStyle = colors[value];
                 context.fillRect(x + offset.x, y + offset.y, 1, 1);
+                
+                // Add outline to the block
+                context.strokeStyle = '#FFFFFF';
+                context.lineWidth = 0.05;
+                context.strokeRect(x + offset.x, y + offset.y, 1, 1);
+                
+                // Add inner accent line (top-left corner)
+                context.beginPath();
+                context.moveTo(x + offset.x + 0.15, y + offset.y + 0.15);
+                context.lineTo(x + offset.x + 0.15, y + offset.y + 0.85);
+                context.lineTo(x + offset.x + 0.85, y + offset.y + 0.85);
+                context.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                context.lineWidth = 0.03;
+                context.stroke();
+                
+                // Add shadow effect (bottom-right corner)
+                context.beginPath();
+                context.moveTo(x + offset.x + 0.85, y + offset.y + 0.15);
+                context.lineTo(x + offset.x + 0.85, y + offset.y + 0.85);
+                context.lineTo(x + offset.x + 0.15, y + offset.y + 0.85);
+                context.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+                context.lineWidth = 0.03;
+                context.stroke();
             }
         });
     });
 }
 
 function draw() {
+    // Clear the canvas with a dark background
     context.fillStyle = '#000';
     context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw grid lines for visual accent
+    context.strokeStyle = 'rgba(50, 50, 80, 0.4)';
+    context.lineWidth = 0.02;
+    
+    // Draw vertical grid lines
+    for (let i = 0; i <= arena[0].length; i++) {
+        context.beginPath();
+        context.moveTo(i, 0);
+        context.lineTo(i, arena.length);
+        context.stroke();
+    }
+    
+    // Draw horizontal grid lines
+    for (let i = 0; i <= arena.length; i++) {
+        context.beginPath();
+        context.moveTo(0, i);
+        context.lineTo(arena[0].length, i);
+        context.stroke();
+    }
+    
+    // Draw the game pieces
     drawMatrix(arena, {x: 0, y: 0});
     drawMatrix(player.matrix, player.pos);
 }
